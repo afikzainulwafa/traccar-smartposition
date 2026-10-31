@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import org.traccar.config.Config;
 import org.traccar.config.Keys;
 import org.traccar.database.StatisticsManager;
+import org.traccar.helper.DistanceCalculator;
 import org.traccar.helper.UnitsConverter;
 import org.traccar.helper.model.AttributeUtil;
 import org.traccar.model.Calendar;
@@ -153,7 +154,9 @@ public class FilterHandler extends BasePositionHandler {
 
     private boolean filterMaxSpeed(Position position, Position last) {
         if (filterMaxSpeed != 0 && last != null) {
-            double distance = position.getDouble(Position.KEY_DISTANCE);
+            double distance = DistanceCalculator.distance(
+                    position.getLatitude(), position.getLongitude(),
+                    last.getLatitude(), last.getLongitude());
             double time = position.getFixTime().getTime() - last.getFixTime().getTime();
             return time > 0 && UnitsConverter.knotsFromMps(distance / (time / 1000)) > filterMaxSpeed;
         }
