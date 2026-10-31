@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM 'http://java.sun.com/dtd/properties.dtd'>
+<properties>
+
+    <!-- Documentation: https://www.traccar.org/configuration-file/ -->
+    <entry key='database.driver'>org.postgresql.Driver</entry>
+    <entry key='database.url'>jdbc:postgresql://localhost:5432/traccardb</entry>
+    <entry key='database.user'>traccar</entry>
+    <entry key="database.password">******</entry>
+    <entry key='database.timezone'>Asia/Jakarta</entry>
+    <entry key='gt06.port'>8088</entry>
+    <entry key='h02.port'>5093</entry>
+    <entry key='watch.port'>5094</entry>
+    <entry key='web.default'>modern</entry>
+    <entry key='server.timezone'>Asia/Jakarta</entry>
+    <entry key='web.timeFormat'>HH:mm:ss</entry>
+    <entry key='osmand.port'>5055</entry>
+    <entry key='web.dateFormat'>yyyy-MM-dd</entry>
+    <entry key='web.address'>0.0.0.0</entry>
+    <entry key='web.port'>8082</entry>
+    <entry key='web.timezone'>Asia/Jakarta</entry>
+    <entry key='web.title'>Smart Position</entry>
+
+    <entry key='galileosky.port'>5034</entry>
+    <entry key='teltonika.port'>5027</entry>
+
+
+    <!-- Layer 1: drop impossible GPS jumps at ingest (GT06 spider lines) -->
+    <entry key='filter.enable'>true</entry>
+   <!--  <entry key='filter.invalid'>false</entry> -->
+   <!--   <entry key='coordinates.filter'>true</entry> -->
+   <!--  <entry key='coordinates.maxError'>0</entry> -->
+
+    <entry key='filter.zero'>true</entry>
+    <entry key='filter.duplicate'>false</entry>
+    <entry key='filter.maxSpeed'>120</entry>
+    <entry key='filter.relative'>false</entry>
+    <entry key='logger.level'>info</entry>
+
+
+</properties>

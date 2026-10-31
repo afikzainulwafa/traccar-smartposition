@@ -192,8 +192,9 @@ public class Position extends Message {
     private Date fixTime;
 
     public Date getFixTime() {
-        return fixTime;
+        return deviceTime;
     }
+
 
     public void setFixTime(Date fixTime) {
         this.fixTime = fixTime;
