@@ -1521,7 +1521,7 @@ public final class Keys {
      */
     public static final ConfigKey<Boolean> FILTER_SOFT_FILTER = new BooleanConfigKey(
             "filter.softFilter",
-            List.of(KeyType.GLOBAL),
+            List.of(KeyType.CONFIG),
             true);
 
 
