@@ -1517,6 +1517,15 @@ public final class Keys {
             "");
 
     /**
+     * When enabled, positions that fail filter checks are marked valid=false and saved to database instead of dropped.
+     */
+    public static final ConfigKey<Boolean> FILTER_SOFT_FILTER = new BooleanConfigKey(
+            "filter.softFilter",
+            List.of(KeyType.GLOBAL),
+            true);
+
+
+    /**
      * Override device time. Possible values are 'deviceTime' and 'serverTime'
      */
     public static final ConfigKey<String> TIME_OVERRIDE = new StringConfigKey(

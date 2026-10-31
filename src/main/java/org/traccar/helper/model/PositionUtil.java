@@ -60,6 +60,7 @@ public final class PositionUtil {
                 new Columns.All(),
                 new Condition.And(
                         new Condition.Equals("deviceId", deviceId),
+                        new Condition.Equals("valid", true),
                         new Condition.Between("fixTime", "from", from, "to", to)),
                 new Order("fixTime")));
     }

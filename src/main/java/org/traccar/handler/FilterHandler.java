@@ -57,6 +57,7 @@ public class FilterHandler extends BasePositionHandler {
     private final boolean filterRelative;
     private final long skipLimit;
     private final boolean skipAttributes;
+    private final boolean softFilter;
 
     private final CacheManager cacheManager;
     private final Storage storage;
@@ -82,6 +83,7 @@ public class FilterHandler extends BasePositionHandler {
         filterRelative = config.getBoolean(Keys.FILTER_RELATIVE);
         skipLimit = config.getLong(Keys.FILTER_SKIP_LIMIT) * 1000;
         skipAttributes = config.getBoolean(Keys.FILTER_SKIP_ATTRIBUTES_ENABLE);
+        softFilter = config.getBoolean(Keys.FILTER_SOFT_FILTER);
         this.cacheManager = cacheManager;
         this.storage = storage;
         this.statisticsManager = statisticsManager;
@@ -267,8 +269,10 @@ public class FilterHandler extends BasePositionHandler {
         }
 
         if (!filterType.isEmpty()) {
-            LOGGER.info("Position filtered by {}filters from device: {}", filterType, device.getUniqueId());
-            return true;
+            LOGGER.info("Position flagged by {}filters from device: {}", filterType, device.getUniqueId());
+            position.setValid(false);
+            position.set("filterType", filterType.toString().trim());
+            return !softFilter;
         }
 
         return false;

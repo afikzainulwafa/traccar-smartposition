@@ -47,7 +47,7 @@ public class PostProcessHandler extends BasePositionHandler {
     @Override
     public void onPosition(Position position, Callback callback) {
         try {
-            if (PositionUtil.isLatest(cacheManager, position)) {
+            if (position.getValid() && PositionUtil.isLatest(cacheManager, position)) {
                 Device updatedDevice = new Device();
                 updatedDevice.setId(position.getDeviceId());
                 updatedDevice.setPositionId(position.getId());
